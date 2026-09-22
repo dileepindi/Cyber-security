@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberShield Academy</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:#f4f7ff}
+header{padding:18px 6%;display:flex;justify-content:space-between;align-items:center;background:#111831;position:sticky;top:0;z-index:5}
+.logo{font-size:21px;font-weight:800;color:#67e8f9}.btn{display:inline-block;border:0;border-radius:9px;padding:13px 20px;background:#06b6d4;color:#06121a;font-weight:700;cursor:pointer;text-decoration:none}
+.hero{padding:75px 6%;text-align:center;background:linear-gradient(135deg,#101936,#07121f)}
+.hero h1{font-size:42px;margin:10px auto;max-width:800px}.hero p{max-width:680px;margin:20px auto;color:#cbd5e1;line-height:1.6}
+.badge{display:inline-block;padding:7px 12px;border-radius:30px;background:#153047;color:#67e8f9}
+.price{margin:22px 0;font-size:28px;font-weight:800}.old{text-decoration:line-through;color:#64748b;font-size:18px;margin-right:8px}
+section{padding:55px 6%;max-width:1100px;margin:auto}.title{text-align:center;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card{background:#121a32;border:1px solid #25304d;border-radius:14px;padding:22px}.card h3{margin-top:0}.card p{color:#b8c2d6;line-height:1.5}
+.offer{background:#101a31;border:1px solid #33415f;border-radius:18px;padding:30px;text-align:center}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:20;align-items:center;justify-content:center;padding:20px}
+.box{background:#111831;border-radius:16px;padding:25px;width:min(420px,100%)}input{width:100%;padding:13px;margin:8px 0;background:#0a1020;border:1px solid #34415f;border-radius:8px;color:white}
+.close{float:right;cursor:pointer;color:#94a3b8}.success{color:#67e8f9;margin-top:15px}
+footer{text-align:center;padding:30px;color:#7f8ca8}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🛡️ CyberShield Academy</div>
+  
+</header>
+
+<div class="hero">
+  <span class="badge">Beginner Friendly • Legal & Authorized Labs</span>
+  <h1>Learn Ethical Hacking & Cybersecurity From Zero</h1>
+  <p>Learn networking, Linux, web security, OWASP fundamentals and practical security testing through structured lessons and safe hands-on labs.</p>
+  <div class="price"><span class="old">₹1,999</span> ₹499</div>
+  <a class="btn" href="https://superprofile.bio/course/379c5e82-20f4-4e60-881c-c9c4a2b76599" target="_blank" rel="noopener noreferrer">Enroll Now</a>
+</div>
+
+<section>
+  <div class="title"><h2>What You'll Learn</h2><p>12 structured modules for beginners.</p></div>
+  <div class="grid">
+    <div class="card"><h3>01. Cybersecurity Basics</h3><p>Security concepts, threats, risks and ethical hacking methodology.</p></div>
+    <div class="card"><h3>02. Networking</h3><p>IP, DNS, HTTP, ports and other networking fundamentals.</p></div>
+    <div class="card"><h3>03. Linux</h3><p>Command line, files, permissions and basic security tooling.</p></div>
+    <div class="card"><h3>04. Web Security</h3><p>Web architecture and common security weaknesses.</p></div>
+    <div class="card"><h3>05. OWASP Top 10</h3><p>Understand common web application security risks.</p></div>
+    <div class="card"><h3>06. Practical Labs</h3><p>Practice only in authorized, safe lab environments.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="offer">
+    <h2>Launch Offer</h2>
+    <p>Full beginner course • Notes • Practical labs • Lifetime access</p>
+    <div class="price">₹499</div>
+    <a class="btn" href="https://superprofile.bio/course/379c5e82-20f4-4e60-881c-c9c4a2b76599" target="_blank" rel="noopener noreferrer">Get Access</a>
+  </div>
+</section>
+
+<section>
+  <div class="title"><h2>Course Access</h2><p>After successful payment, students can access their dashboard.</p></div>
+  <div class="card">
+    <h3>Student Dashboard Demo</h3>
+    <p>Course progress: <strong id="progress">0%</strong></p>
+    <button class="btn" onclick="completeLesson()">Complete Demo Lesson</button>
+  </div>
+</section>
+
+<footer>© 2026 CyberShield Academy • Educational course for legal and authorized security testing.</footer>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <span class="close" onclick="closeModal()">✕</span>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+let progress=0;
+function openModal(type){
+  document.getElementById('modal').style.display='flex';
+  const c=document.getElementById('modalContent');
+  if(type==='login'){
+    c.innerHTML='<h2>Student Login</h2><input placeholder="Email"><input type="password" placeholder="Password"><button class="btn" onclick="demoLogin()">Login</button><p id="msg"></p>';
+  }else{
+    c.innerHTML='<h2>Demo Payment</h2><p>Course: Ethical Hacking & Cybersecurity</p><h2>₹499</h2><input placeholder="Student name"><input placeholder="Email"><button class="btn" onclick="pay()">Proceed to Payment</button><p id="msg"></p>';
+  }
+}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function demoLogin(){document.getElementById('msg').innerHTML='<span class="success">Demo login successful. Connect a real backend for production authentication.</span>'}
+function pay(){document.getElementById('msg').innerHTML='<span class="success">Demo payment successful! In production, connect this button to your payment gateway and automatically create course access.</span>'}
+function completeLesson(){progress=Math.min(100,progress+10);document.getElementById('progress').textContent=progress+'%'}
+</script>
+</body>
+</html>
